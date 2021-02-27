@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  radicle.public.dappnode.eth:
+    build: ./build
+    image: "radicle.public.dappnode.eth:0.1.0"
+    restart: unless-stopped
+    environment:
+      - NAME=seedling
+      - EXTRA_OPTS=
+      - HOST=host.docker.internal
+    volumes:
+      - "radicle_seed:/radicle-seed:rw"
+      - "./key:/radicle-seed/key"
+volumes:
+  radicle_seed: {}

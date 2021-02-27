@@ -1,0 +1,12 @@
+{
+  "name": "radicle.public.dappnode.eth",
+  "version": "0.1.0",
+  "description": "radicle.public.dappnode.eth description",
+  "type": "service",
+  "author": "androolloyd <opensource@andrewredden.com> (https://github.com/androolloyd)",
+  "categories": ["Developer tools"],
+  "links": {
+    "homepage": "https://your-project-homepage-or-docs.io"
+  },
+  "license": "GLP-3.0"
+}
