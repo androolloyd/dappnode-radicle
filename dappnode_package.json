@@ -4,7 +4,7 @@
   "upstreamVersion": "master",
   "upstreamRepo": "radicle-dev/radicle-bins",
   "upstreamArg": "UPSTREAM_VERSION",
-  "description": "<RADICLE DESCRIPTION>",
+  "description": "A peer-to-peer stack for building software together.",
   "type": "service",
   "author": "androolloyd <opensource@andrewredden.com> (https://github.com/androolloyd)",
   "contributors": [
@@ -30,8 +30,8 @@
     "url": "rad:git:hwd1yregwjsjsqajxmqd6yt81jnygww4rmfqniaes3grqxdjwax9etq9mea"
   },
   "links": {
-    "homepage": "https://hydradx.io",
-    "UI": "http://radicle.public.dappnode:7088"
+    "homepage": "https://radicle.xyz",
+    "UI": "http://radicle.public.dappnode:8888"
   },
   "license": "GPL v3"
 }
