@@ -1,17 +1,33 @@
-FROM gcr.io/opensourcecoin/radicle-seed-node@sha256:8b49e7e233d810ad7f98073614f4ff3f3bb07e70c910fde1dc4f272231e9b0cf
+FROM node:buster as builder-ui
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+ARG UPSTREAM_VERSION
+
+RUN apt update && apt install -y git
+
+WORKDIR /radicle
+
+RUN git clone -b ${UPSTREAM_VERSION} https://github.com/radicle-dev/radicle-bins.git .
+
+RUN (cd seed/ui && yarn && yarn build)
+
+FROM liuchong/rustup:nightly as builder-seed
+
+WORKDIR /radicle
+COPY --from=builder-ui /radicle /radicle
+
+RUN cargo build -p radicle-seed-node --release
+RUN cargo build -p radicle-keyutil --release
+
+RUN cp ./target/release/radicle-seed-node /radicle/seed-node
+RUN cp ./target/release/radicle-keyutil /radicle/key-util
+
+COPY ./docker-entrypoint.sh /radicle/docker-entrypoint.sh
 
 RUN mkdir -p /radicle-seed
 
-WORKDIR /radicle-seed
 EXPOSE 12345
-EXPOSE 80
 EXPOSE 8888
 
-
-ENTRYPOINT /radicle-seed-node -- \
-             --root /radiclce-seed \
-             --peer-listen ${HOST}:12345 \
-             --http-listen ${HOST}:80 \
-             --name ${NAME} \
-             --assets-path seed/ui/public \
-             < /radicle-seed/key/secret.key ${EXTRA_OPTS}
+ENTRYPOINT ["bash","docker-entrypoint.sh"]

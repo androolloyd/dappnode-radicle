@@ -1,12 +1,37 @@
 {
   "name": "radicle.public.dappnode.eth",
   "version": "0.1.0",
-  "description": "radicle.public.dappnode.eth description",
+  "upstreamVersion": "master",
+  "upstreamRepo": "radicle-dev/radicle-bins",
+  "upstreamArg": "UPSTREAM_VERSION",
+  "description": "<RADICLE DESCRIPTION>",
   "type": "service",
   "author": "androolloyd <opensource@andrewredden.com> (https://github.com/androolloyd)",
-  "categories": ["Developer tools"],
-  "links": {
-    "homepage": "https://your-project-homepage-or-docs.io"
+  "contributors": [
+    "radicle-dev (https://github.com/radicle-dev)"
+  ],
+  "categories": [
+    "Developer tools", "Storage", "Communications"
+  ],
+  "keywords": [
+    "radicle"
+  ],
+  "globalEnvs": {
+    "all": true
   },
-  "license": "GLP-3.0"
+  "backup": [
+    {
+      "name": "keystore",
+      "path": "/radicle-seed/secret.key"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "rad:git:hwd1yregwjsjsqajxmqd6yt81jnygww4rmfqniaes3grqxdjwax9etq9mea"
+  },
+  "links": {
+    "homepage": "https://hydradx.io",
+    "UI": "http://radicle.public.dappnode:7088"
+  },
+  "license": "GPL v3"
 }

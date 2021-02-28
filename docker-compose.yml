@@ -1,15 +1,21 @@
 version: "3.4"
 services:
   radicle.public.dappnode.eth:
-    build: ./build
-    image: "radicle.public.dappnode.eth:0.1.0"
+    build:
+      context: ./build
+      args:
+        UPSTREAM_VERSION: master
     restart: unless-stopped
+    ports:
+      - "7088:8888"
+      - "12345:12345"
+      - 12345/udp
     environment:
-      - NAME=seedling
+      - NAME=arbiter
       - EXTRA_OPTS=
-      - HOST=host.docker.internal
+      - HOST=0.0.0.0
     volumes:
       - "radicle_seed:/radicle-seed:rw"
-      - "./key:/radicle-seed/key"
+    image: "radicle.public.dappnode.eth:0.1.0"
 volumes:
   radicle_seed: {}
