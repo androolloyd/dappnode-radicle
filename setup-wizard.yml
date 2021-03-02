@@ -1,0 +1,37 @@
+version: "2"
+fields:
+  - id: NAME
+    target:
+      type: environment
+      name: NAME
+    title: Name
+    description: >-
+      Add a string to identify your seed node
+  - id: PUBLIC_ADDRESS
+    target:
+      type: environment
+      name: PUBLIC_ADDRESS
+    title: Public-Address
+    description: >-
+      Add a publicly available URL to enable connections to your seed node.
+  - id: Seed-Keystore
+    target:
+      type: fileUpload
+      path: /radicle-seed/secret.key
+    title: Seed Node Keystore
+    description: >-
+      A secret key used to manage your node's identity.
+  - id: LOG_LEVEL
+    target:
+      type: environment
+      name: LOG_LEVEL
+    title: Log-Level
+    enum:
+      - "info"
+      - "debug"
+      - "error"
+    description: >-
+      Set the logging output level for the node
+       - **info**: Outputs only messages tagged as (INFO)
+       - **debug**: Outputs all messages (INFO,DEBUG,ERROR)
+       - **error**: Outputs messages tagged as (INFO,ERROR)

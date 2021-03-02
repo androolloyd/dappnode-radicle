@@ -8,7 +8,7 @@ RUN apt update && apt install -y git
 
 WORKDIR /radicle
 
-RUN git clone -b ${UPSTREAM_VERSION} https://github.com/radicle-dev/radicle-bins.git .
+RUN git clone https://github.com/radicle-dev/radicle-bins.git . && git checkout ${UPSTREAM_VERSION}
 
 RUN (cd seed/ui && yarn && yarn build)
 
@@ -27,7 +27,7 @@ COPY ./docker-entrypoint.sh /radicle/docker-entrypoint.sh
 
 RUN mkdir -p /radicle-seed
 
-EXPOSE 12345
+EXPOSE 10001
 EXPOSE 8888
 
 ENTRYPOINT ["bash","docker-entrypoint.sh"]

@@ -21,7 +21,7 @@
   },
   "backup": [
     {
-      "name": "keystore",
+      "name": "secret.key",
       "path": "/radicle-seed/secret.key"
     }
   ],
